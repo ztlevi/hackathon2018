@@ -1,0 +1,38 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Program",
+      "protocol": "inspector",
+      "program": "${workspaceRoot}/app/main.dev.js",
+      "cwd": "${workspaceRoot}",
+      "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/electron",
+      "env": {
+        "START_HOT": 1,
+        "NODE_ENV": "development"
+      },
+      "runtimeArgs": [
+        // "--max_old_space_size=2096",
+        "--trace-warnings",
+        "-r",
+        "babel-register",
+        // "./internals/scripts/CheckPortInUse.js",
+        "-config webpack.config.renderer.dev.js",
+        // "./node_modules/webpack-dev-server/bin/webpack-dev-server",
+        "--disable-gpu"
+      ],
+      "sourceMaps": true
+    },
+    {
+      "type": "node",
+      "request": "attach",
+      "name": "Attach to Process",
+      "port": 5858
+    }
+  ]
+}
