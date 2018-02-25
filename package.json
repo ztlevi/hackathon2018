@@ -43,7 +43,8 @@
       "package.json"
     ],
     "dmg": {
-      "contents": [{
+      "contents": [
+        {
           "x": 130,
           "y": 220
         },
@@ -189,6 +190,7 @@
     "devtron": "^1.4.0",
     "electron-debug": "^1.5.0",
     "es6-promise": "^4.2.4",
+    "firebase": "^4.10.1",
     "font-awesome": "^4.7.0",
     "history": "^4.7.2",
     "isomorphic-fetch": "^2.2.1",

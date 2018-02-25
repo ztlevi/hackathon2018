@@ -13,9 +13,8 @@ function fetchData() {
         }
         return response.json();
       })
-      .then(stories => {
-        console.log(stories);
-        return stories;
+      .then(data => {
+        resolve(data);
       })
       .catch(e => {
         reject(e);

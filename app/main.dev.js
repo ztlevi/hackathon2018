@@ -11,8 +11,24 @@
  * @flow
  */
 import { app, BrowserWindow } from 'electron';
+import * as firebase from 'firebase';
 import MenuBuilder from './menu';
+
 import { fetchData } from './dao/fetchData';
+
+// Initialize Firebase
+const config = {
+  apiKey: 'AIzaSyD7n7J0IIbjZ7Ug8oUstWXNvdwRB6ivSzg',
+  authDomain: 'hackathon2018-2d039.firebaseapp.com',
+  databaseURL: 'https://hackathon2018-2d039.firebaseio.com',
+  projectId: 'hackathon2018-2d039',
+  storageBucket: 'hackathon2018-2d039.appspot.com',
+  messagingSenderId: '462392782061',
+};
+firebase.initializeApp(config);
+
+// Get a reference to the database service
+const database = firebase.database();
 
 let mainWindow = null;
 
@@ -74,6 +90,8 @@ app.on('ready', async () => {
     }
     mainWindow.show();
     mainWindow.focus();
+
+    startApp();
   });
 
   mainWindow.on('closed', () => {
@@ -82,9 +100,20 @@ app.on('ready', async () => {
 
   const menuBuilder = new MenuBuilder(mainWindow);
   menuBuilder.buildMenu();
-  startApp();
 });
 
 const startApp = () => {
-  fetchData().then(data => {});
+  fetchData()
+    .then(data => {
+      if (!data) return;
+      return data;
+    })
+    .then(res => {
+      console.log('Data fetched!!!');
+      mainWindow.webContents.send('data_fetched', res);
+      // database.ref('');
+    })
+    .catch(e => {
+      throw e;
+    });
 };

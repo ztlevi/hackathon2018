@@ -52,4 +52,4 @@ main.js.map
 npm-debug.log.*
 
 yarn.lock
-package-json.lock
+package-lock.json
