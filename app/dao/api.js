@@ -7,8 +7,7 @@ require('isomorphic-fetch');
 function fetchAPI() {
   return new Promise((resolve, reject) => {
     fetch(
-      'https://www.alphavantage.co/query?function=DIGITAL_CURRENCY_DAILY&symbol=BTC&mar' +
-        'ket=CNY&apikey=92FYESS7FEE4K2I1'
+      'https://min-api.cryptocompare.com/data/histoday?fsym=BTC&tsym=USD&limit=10'
     )
       .then(response => {
         if (response.status >= 400) {
