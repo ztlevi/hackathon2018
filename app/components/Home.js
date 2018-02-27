@@ -1,4 +1,3 @@
-// @flow
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './Home.css';
@@ -9,9 +8,9 @@ type Props = {};
 
 export default class Home extends Component<Props> {
   props: Props;
-  constructor(props) {
+  constructor(props) {  
     super(props);
-    this.state = { data: '' };
+    this.state = { data: 1 };
   }
 
   componentDidMount() {
@@ -24,9 +23,9 @@ export default class Home extends Component<Props> {
 
   receiveData() {
     ipcRenderer.on('data_fetched', (event, data) => {
-      let jsonData = JSON.stringify(data);
+      const jsonData = JSON.stringify(data);
       this.setState({
-        data: jsonData,
+        data: jsonData
       });
       console.log('Recieved data');
     });

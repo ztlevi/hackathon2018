@@ -10,7 +10,9 @@
     "node": true
   },
   "rules": {
-    "arrow-parens": ["off"],
+    "arrow-parens": [
+      "off"
+    ],
     "compat/compat": "error",
     "consistent-return": "off",
     "comma-dangle": "off",
@@ -20,10 +22,12 @@
     "jsx-a11y/anchor-is-valid": "off",
     "function-paren-newline": "off",
     "no-console": "off",
+    "no-else-return": "off",
+    "no-unused-vars": "off",
     "no-use-before-define": "off",
     "no-multi-assign": "off",
     "promise/param-names": "error",
-    "promise/always-return": "error",
+    "promise/always-return": "off",
     "promise/catch-or-return": "error",
     "promise/no-native": "off",
     "react/sort-comp": [
@@ -41,11 +45,23 @@
     "react/jsx-no-bind": "off",
     "react/jsx-filename-extension": [
       "error",
-      { "extensions": [".js", ".jsx"] }
+      {
+        "extensions": [
+          ".js",
+          ".jsx"
+        ]
+      }
     ],
-    "react/prefer-stateless-function": "off"
+    "react/prefer-stateless-function": "off",
+    "no-trailing-spaces": "off"
   },
-  "plugins": ["flowtype", "import", "promise", "compat", "react"],
+  "plugins": [
+    "flowtype",
+    "import",
+    "promise",
+    "compat",
+    "react"
+  ],
   "settings": {
     "import/resolver": {
       "webpack": {

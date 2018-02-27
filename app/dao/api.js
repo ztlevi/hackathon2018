@@ -3,7 +3,7 @@ import * as fb from './firebase';
 require('es6-promise').polyfill();
 require('isomorphic-fetch');
 
-//
+
 function fetchAPI() {
   return new Promise((resolve, reject) => {
     fetch(
@@ -15,12 +15,8 @@ function fetchAPI() {
         }
         return response.json();
       })
-      .then(data => {
-        resolve(data);
-      })
-      .catch(e => {
-        reject(e);
-      });
+      .then(data => resolve(data))
+      .catch(e => reject(e));
   });
 }
 
@@ -33,7 +29,6 @@ function fetchData() {
         // fetch data via API if data not exist in firebase
         if (!data.val()) {
           console.log('Fetch data via API');
-
           fetchAPI()
             .then(res => {
               // push data to firebase when data fetched via API
@@ -45,13 +40,10 @@ function fetchData() {
             });
         } else {
           console.log('Fetched data via firebase');
-
           resolve(data.val());
         }
       })
-      .catch(e => {
-        reject(e);
-      });
+      .catch(e => reject(e));
   });
 }
 
